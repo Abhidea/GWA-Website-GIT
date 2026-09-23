@@ -100,4 +100,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // ── Comment Form (Email functionality) ───────────────────
+  const commentForm = document.getElementById('comment-form');
+  if (commentForm) {
+    commentForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const nameInput = commentForm.querySelector('input[type="text"]').value;
+      const emailInput = commentForm.querySelector('input[type="email"]').value;
+      const commentInput = commentForm.querySelector('textarea').value;
+
+      const subject = encodeURIComponent("Comment on GWA Website");
+      const bodyText = `Name: ${nameInput}\nEmail ID: ${emailInput}\nComment: ${commentInput}`;
+      const body = encodeURIComponent(bodyText);
+
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=GirinagarWelfareAssociation@gmail.com&su=${subject}&body=${body}`;
+      window.open(gmailUrl, '_blank');
+    });
+  }
+
 });
